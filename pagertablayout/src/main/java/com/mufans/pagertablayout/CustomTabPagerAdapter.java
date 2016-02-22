@@ -5,6 +5,8 @@ import android.view.ViewGroup;
 
 /**
  * Created by liuj on 2016/2/22.
+ *
+ * PagerAdapter with CustomTab
  */
 public interface CustomTabPagerAdapter {
 

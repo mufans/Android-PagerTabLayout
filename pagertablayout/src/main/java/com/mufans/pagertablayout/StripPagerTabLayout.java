@@ -96,6 +96,9 @@ public class StripPagerTabLayout extends HorizontalScrollView implements PagerTa
                 }
             }
         }
+        scrollTo(0, 0);
+        mCurrentPos = 0;
+        indicatorLinearLayout.reset();
     }
 
     @Override
@@ -136,10 +139,10 @@ public class StripPagerTabLayout extends HorizontalScrollView implements PagerTa
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         if (w > 0) {
-            mTabLayoutWidth = w;
+            mTabLayoutWidth = w / visibleCount;
             for (int i = 0; i < indicatorLinearLayout.getChildCount(); i++) {
                 View tabView = indicatorLinearLayout.getChildAt(i);
-                tabView.getLayoutParams().width = mTabLayoutWidth / visibleCount;
+                tabView.getLayoutParams().width = mTabLayoutWidth;
             }
         }
     }
@@ -248,8 +251,18 @@ public class StripPagerTabLayout extends HorizontalScrollView implements PagerTa
         @Override
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
-            int top = getHeight() - height;
-            canvas.drawRect(left, top, left + width, top + getHeight(), paint);
+            if (getChildCount() > 0) {
+                int top = getHeight() - height;
+                canvas.drawRect(left, top, left + width, top + getHeight(), paint);
+            }
+
+        }
+
+        private void reset() {
+            selectedPos = 0;
+            left = 0;
+            selectedOffset = 0;
+            width = 0;
         }
 
      /*   private void animateUpdateIndicatorByTab(final int fromPos, final int selectedPos) {
@@ -313,8 +326,9 @@ public class StripPagerTabLayout extends HorizontalScrollView implements PagerTa
 
         private int getIndicatorLengthFromTabTitle(View tabView) {
             if (tabView instanceof TabView) {
+                int titleLength = ((TabView) tabView).getTextLength();
                 int extraDistance = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, INDICATOR_EXTRA_DISTANCE, getResources().getDisplayMetrics());
-                return ((TabView) tabView).getTextLength() + extraDistance;
+                return titleLength == 0 ? 0 : titleLength + extraDistance;
             }
             return 0;
         }

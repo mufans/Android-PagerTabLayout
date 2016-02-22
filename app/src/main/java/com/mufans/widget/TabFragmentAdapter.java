@@ -11,7 +11,7 @@ import com.mufans.pagertablayout.IconTitlePagerAdapter;
 /**
  * Created by liuj on 2016/2/22.
  */
-public class TabFragmentAdapter extends FragmentPagerAdapter implements IconTitlePagerAdapter {
+public class TabFragmentAdapter extends FragmentPagerAdapter {
 
     private Context context;
     private String[] titles;
@@ -22,10 +22,6 @@ public class TabFragmentAdapter extends FragmentPagerAdapter implements IconTitl
     }
 
 
-    @Override
-    public int getIcon(int pos) {
-        return R.drawable.ic_launcher;
-    }
 
     @Override
     public int getCount() {

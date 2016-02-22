@@ -1,9 +1,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.mufans.widget.MainActivity" >
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+    tools:context="com.mufans.widget.MainActivity">
+    <item
+        android:id="@+id/only_title"
+        android:title="only title" />
+    <item
+        android:id="@+id/title_icon"
+        android:title="title and icon" />
+
+    <item
+        android:id="@+id/only_icon"
+        android:title="only icon" />
+
+    <item
+        android:id="@+id/tab_custom"
+        android:title="custom tab" />
+
 </menu>

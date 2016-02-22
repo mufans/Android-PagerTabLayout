@@ -14,18 +14,22 @@ import com.mufans.pagertablayout.StripPagerTabLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String[] titles = new String[]{"t", "titfdle2", "tidftle3", "ttle4", "title5", "title6", "title1", "title2", "title3", "title4", "title5", "title6"};
+
     private ViewPager viewPager;
     private StripPagerTabLayout tabLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        TabFragmentAdapter adapter = new TabFragmentAdapter(getSupportFragmentManager(), new String[]{"t", "titfdle2", "tidftle3", "ttle4", "title5", "title6","title1", "title2", "title3", "title4", "title5", "title6"});
+        TabFragmentAdapter adapter = new TabFragmentAdapter(getSupportFragmentManager(), titles);
         viewPager.setAdapter(adapter);
         tabLayout = (StripPagerTabLayout) findViewById(R.id.pagerTabLayout);
         tabLayout.setViewPager(viewPager);
+
     }
 
     @Override
@@ -40,13 +44,23 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.only_icon:
+                viewPager.setAdapter(new TabFragmentAdapter3(getSupportFragmentManager(), titles));
+                break;
+            case R.id.only_title:
+                viewPager.setAdapter(new TabFragmentAdapter(getSupportFragmentManager(), titles));
+                break;
+            case R.id.title_icon:
+                viewPager.setAdapter(new TabFragmentAdapter2(getSupportFragmentManager(), titles));
+                break;
+            case R.id.tab_custom:
+                viewPager.setAdapter(new TabFragmentAdapter4(getSupportFragmentManager(), titles));
+                break;
         }
-
+        tabLayout.notifyDataSetChanged();
         return super.onOptionsItemSelected(item);
     }
 }
