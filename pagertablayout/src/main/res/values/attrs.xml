@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StripPagerTabLayout">
+        <attr name="StripPager_visible_count" format="integer" />
+        <attr name="StripPagerIndicator_color" format="color" />
+        <attr name="StripPager_text_size" format="dimension" />
+        <attr name="StripPager_text_color" format="color" />
+        <attr name="StripPagerIndicator_height" format="dimension" />
+        <attr name="StripPagerIndicator_width" format="dimension" />
+        <attr name="StripPagerIndicator_tab_background" format="reference" />
+    </declare-styleable>
+
+</resources>

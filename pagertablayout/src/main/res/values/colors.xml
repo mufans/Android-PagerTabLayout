@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="default_strip_indicator_color">#FF7F00</color>
+    <color name="default_title_selected_color">@color/default_strip_indicator_color</color>
+    <color name="default_title_unselected_color">@android:color/black</color>
+</resources>
